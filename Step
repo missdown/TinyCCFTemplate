@@ -4,3 +4,6 @@ git commit -m "Detial"
 git remote add origin https://github.com/missdown/AT.git
 git push -u origin master
 
+Change New Things
+
+Final Step use $ git push

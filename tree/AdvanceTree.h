@@ -257,17 +257,20 @@ namespace ADTree{
         bool color;
         RBNode* left, *right, *parent;
 
-        RBNode(T data):data(data) {left = right = parent = nullptr}
+        RBNode(T data) : data(data) { left = right = parent = nullptr; }
     };
 
     template <typename T>
     class RBTree{
+        using Node = RBNode<T>;
+        using Node_array = Node *;
     public:
-
+        RBTree() {
+        }
 
     private:
+        Node_array mroot;
         enum Color{RED, BLACK};
-
 
     };
 }
