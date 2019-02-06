@@ -1,0 +1,3 @@
+/home/miss/CLionProjects/ACM_template/build/CMakeFiles/rebuild_cache.dir
+/home/miss/CLionProjects/ACM_template/build/CMakeFiles/ACM_template.dir
+/home/miss/CLionProjects/ACM_template/build/CMakeFiles/edit_cache.dir

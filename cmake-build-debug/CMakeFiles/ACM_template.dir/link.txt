@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/ACM_template.dir/main.cpp.o  -o ACM_template 
