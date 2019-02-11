@@ -35,6 +35,19 @@ float invSqrt(float x)
     return x;
 }
 
+int Factrial(int n) {
+    if (n == 0 || n == 1) return 1;
+    else return Factrial(n - 1) + Factrial(n - 2);
+}
+
+unsigned long long FactialLM(int n) {
+    unsigned long long FactrialList[100];
+    FactrialList[0] = FactrialList[1] = 1;
+    for (int i = 2; i <= n; ++i) {
+        FactrialList[i] = FactrialList[i - 1] + FactrialList[i - 2];
+    }
+    return FactrialList[n];
+}
 
 
 /*

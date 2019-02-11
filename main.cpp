@@ -138,6 +138,8 @@ int main() {
     star.SPFA(0);
 ////
     std::cout << std::endl;
+    std::cout << FactialLM(50) << std::endl;
+    std::cout << DP::Factorial(40) << std::endl;
     std::cout << DP::NumberTower() << std::endl;
     std::cout << DP::LongestSequenze() << std::endl;
     std::cout << DP::LIS() << std::endl;

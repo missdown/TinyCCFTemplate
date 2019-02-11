@@ -13,6 +13,16 @@ namespace DP {
 
     const int maxn = 100;
 
+    int Factorial(int n) {
+        int dp[1000];
+        std::fill(dp, dp + 1000, -1);
+        if (n == 0 || n == 1) return 1;
+        if (dp[n] != -1) return dp[n];
+        else {
+            dp[n] = Factrial(n - 1) + Factrial(n - 2);
+            return dp[n];
+        }
+    }
 
     int NumberTower() {
         int f[maxn][maxn], dp[maxn][maxn];
