@@ -251,18 +251,61 @@ namespace ADTree{
     };
 
 
-    template <typename T>
-    struct RBNode {
-        T data;
-        bool color;
-        RBNode* left, *right, *parent;
-
-        RBNode(T data) : data(data) { left = right = parent = nullptr; }
-    };
 
     template <typename T>
     class RBTree{
-        using Node = RBNode<T>;
+
+        class RBNode {
+            T data;
+            bool color;
+            RBNode *left, *right, *parent;
+
+            RBNode(T data) : data(data) {
+                left = right = parent = nullptr;
+                color = RED;
+            }
+
+            RBNode *uncle() {
+                if (parent == nullptr || parent->parent == nullptr)
+                    return nullptr;
+
+                if (parent->isOnLeft())
+                    return parent->parent->right;
+                else
+                    return parent->parent->left;
+            }
+
+            bool isOnLeft() {
+                return this == parent->left;
+            }
+
+            RBNode *sibling() {
+                if (parent == nullptr)
+                    return nullptr;
+                if (isOnLeft())
+                    return parent->right;
+                else
+                    return parent->left;
+            }
+
+            void moveDown(RBNode *nParent) {
+                if (parent != nullptr) {
+                    if (isOnLeft()) {
+                        parent->left = nParent;
+                    } else {
+                        parent->right = nParent;
+                    }
+                }
+                nParent->parent = parent;
+                parent = nParent;
+            }
+
+            bool hasRedChild() {
+                return (left != nullptr and left->color == RED) or (right != nullptr and right->color == RED);
+            }
+        };
+
+        using Node = RBNode;
         using Node_array = Node *;
     public:
         RBTree() {
@@ -270,6 +313,11 @@ namespace ADTree{
 
     private:
         Node_array mroot;
+
+        void leftRotate(Node_array x) {
+            Node_array nParent = x->right;
+
+        }
         enum Color{RED, BLACK};
 
     };
