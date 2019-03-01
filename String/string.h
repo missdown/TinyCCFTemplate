@@ -5,6 +5,7 @@
 #ifndef ACM_TEMPLATE_STRING_H
 #define ACM_TEMPLATE_STRING_H
 
+#include <list>
 namespace String{
     const int maxn = 100;
     int next[maxn];
@@ -73,6 +74,70 @@ namespace String{
         }
         return ans;
     }
+
+    // TridTree Method
+    const int MAX_CHAR = 256;
+
+    class SuffixTriedNode {
+    public:
+        SuffixTriedNode() {
+            indexs = new std::list<int>;
+            for (int i = 0; i < MAX_CHAR; ++i) {
+                children[i] = nullptr;
+            }
+        }
+
+        void insertSuffix(std::string suffix, int index) {
+            indexs->push_back(index);
+            if (suffix.length() > 0) {
+                int cIndex = static_cast<int>(suffix.at(0));
+
+                if (children[cIndex] == nullptr)
+                    children[cIndex] = new SuffixTriedNode();
+
+                children[cIndex]->insertSuffix(suffix.substr(1), index + 1);
+            }
+        }
+
+        std::list<int> *search(std::string s) {
+            if (s.length() == 0)
+                return indexs;
+
+            int cIndex = static_cast<int>(s.at(0));
+            if (children[cIndex] != nullptr)
+                return (children[cIndex])->search(s.substr(1));
+            else return nullptr;
+        }
+
+    private:
+        SuffixTriedNode *children[MAX_CHAR];
+        std::list<int> *indexs;
+    };
+
+    class SuffixTrid {
+    private:
+        SuffixTriedNode root;
+    public:
+        SuffixTrid(std::string txt) {
+            for (int i = 0; i < txt.length(); ++i) {
+                root.insertSuffix(txt.substr(i), i);
+            }
+        }
+
+        void search(std::string pat) {
+            std::list<int> *result = root.search(pat);
+
+            if (result == nullptr)
+                std::cout << "Pattern not found" << std::endl;
+            else {
+                std::list<int>::iterator i;
+                int patLen = pat.length();
+                for (i = result->begin(); i != result->end(); ++i)
+                    std::cout << "Pattern found at position " << *i - patLen << std::endl;
+            }
+
+        }
+    };
 
 }
 

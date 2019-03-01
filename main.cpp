@@ -9,7 +9,7 @@
 #include "dp/dp.h"
 #include "String/string.h"
 #include "tree/AdvanceTree.h"
-//#pragma GCC optimize ("O3")
+
 
 using namespace std;
 
@@ -199,5 +199,10 @@ int main() {
 
     rbtree.InOrder();
     rbtree.LevelOrder();
+    std::cout << std::endl;
+
+    std::string txt = "HOCHSCHULDEUTSCH";
+    String::SuffixTrid S(txt);
+    S.search("SCH");
     return 0;
 }
