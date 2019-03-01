@@ -173,5 +173,31 @@ int main() {
     bitree.Build(TestSequence);
     bitree.update(4, 10);
     std::cout << bitree.Sum(3) << std::endl;
+
+    std::cout << std::endl;
+    ADTree::RBTree<int> rbtree;
+    rbtree.insert(7);
+    rbtree.insert(3);
+    rbtree.insert(18);
+    rbtree.insert(10);
+    rbtree.insert(22);
+    rbtree.insert(8);
+    rbtree.insert(11);
+    rbtree.insert(26);
+    rbtree.insert(2);
+    rbtree.insert(6);
+    rbtree.insert(13);
+
+    rbtree.InOrder();
+    rbtree.LevelOrder();
+
+    rbtree.deleteByVal(18);
+    rbtree.deleteByVal(11);
+    rbtree.deleteByVal(3);
+    rbtree.deleteByVal(10);
+    rbtree.deleteByVal(22);
+
+    rbtree.InOrder();
+    rbtree.LevelOrder();
     return 0;
 }

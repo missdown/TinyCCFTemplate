@@ -5,6 +5,8 @@
 #ifndef ACM_TEMPLATE_ADVANCETREE_H
 #define ACM_TEMPLATE_ADVANCETREE_H
 
+#include <queue>
+
 namespace ADTree{
 
 #define LSB(i) ((i)&(-i))
@@ -255,12 +257,17 @@ namespace ADTree{
     template <typename T>
     class RBTree{
 
+        enum Color {
+            RED, BLACK
+        };
+
         class RBNode {
+        public:
             T data;
-            bool color;
+            Color color;
             RBNode *left, *right, *parent;
 
-            RBNode(T data) : data(data) {
+            explicit RBNode(T data) : data(data) {
                 left = right = parent = nullptr;
                 color = RED;
             }
@@ -305,10 +312,79 @@ namespace ADTree{
             }
         };
 
-        using Node = RBNode;
-        using Node_array = Node *;
+        using Node_array = RBNode *;
     public:
         RBTree() {
+            mroot = nullptr;
+        }
+
+        Node_array getRoot() { return mroot; }
+
+        Node_array search(T n) {
+            Node_array temp = mroot;
+            while (temp != nullptr) {
+                if (n < temp->data) {
+                    if (temp->left == nullptr)
+                        break;
+                    else
+                        temp = temp->left;
+                } else if (n == temp->data) {
+                    break;
+                } else {
+                    if (temp->right == nullptr)
+                        break;
+                    else
+                        temp = temp->right;
+                }
+            }
+            return temp;
+        }
+
+        void insert(T n) {
+            Node_array newNode = new RBNode(n);
+            if (mroot == nullptr) {
+                newNode->color = BLACK;
+                mroot = newNode;
+            } else {
+                Node_array temp = search(n);
+                if (temp->data == n) {
+                    return;
+                }
+                newNode->parent = temp;
+                if (n < temp->data)
+                    temp->left = newNode;
+                else
+                    temp->right = newNode;
+                fixRedRed(newNode);
+            }
+        }
+
+        void deleteByVal(T n) {
+            if (mroot == nullptr)
+                return;
+            Node_array v = search(n), u;
+            if (v->data != n) {
+                return;
+            }
+            deleteNode(v);
+        }
+
+        void InOrder() {
+            std::cout << "Inorder: " << std::endl;
+            if (mroot == nullptr)
+                std::cout << "Tree is empty" << std::endl;
+            else
+                inOrder(mroot);
+            std::cout << std::endl;
+        }
+
+        void LevelOrder() {
+            std::cout << "Level order: " << std::endl;
+            if (mroot == nullptr)
+                std::cout << "Tree is empty" << std::endl;
+            else
+                levelOrder(mroot);
+            std::cout << std::endl;
         }
 
     private:
@@ -316,11 +392,233 @@ namespace ADTree{
 
         void leftRotate(Node_array x) {
             Node_array nParent = x->right;
-
+            if (x == mroot)
+                mroot = nParent;
+            x->moveDown(nParent);
+            x->right = nParent->left;
+            if (nParent->left != nullptr)
+                nParent->left->parent = x;
+            nParent->left = x;
         }
-        enum Color{RED, BLACK};
+
+        void rightRotate(Node_array x) {
+            Node_array nParent = x->left;
+
+            if (x == mroot)
+                mroot = nParent;
+            x->moveDown(nParent);
+
+            x->left = nParent->right;
+
+            if (nParent->right != nullptr)
+                nParent->right->parent = x;
+
+            nParent->right = x;
+        }
+
+        void swapColors(Node_array x1, Node_array x2) {
+            Color temp = x1->color;
+            x1->color = x2->color;
+            x2->color = temp;
+        }
+
+        void swapValues(Node_array x1, Node_array x2) {
+            T data = x1->data;
+            x1->data = x2->data;
+            x2->data = data;
+        }
+
+        void fixRedRed(Node_array x) {
+            if (x == mroot) {
+                x->color = BLACK;
+                return;
+            }
+
+            Node_array parent = x->parent, grandparent = parent->parent, uncle = x->uncle();
+
+            if (parent->color != BLACK) {
+                if (uncle != nullptr && uncle->color == RED) {
+                    parent->color = BLACK;
+                    uncle->color = BLACK;
+                    grandparent->color = RED;
+                    fixRedRed(grandparent);
+                } else {
+                    if (parent->isOnLeft()) {
+                        if (x->isOnLeft()) {
+                            swapColors(parent, grandparent);
+                        } else {
+                            leftRotate(parent);
+                            swapColors(x, grandparent);
+                        }
+                        rightRotate(grandparent);
+                    } else {
+                        if (x->isOnLeft()) {
+                            rightRotate(parent);
+                            swapColors(x, grandparent);
+                        } else {
+                            swapColors(parent, grandparent);
+                        }
+                        leftRotate(grandparent);
+                    }
+                }
+            }
+        }
+
+        Node_array successor(Node_array x) {
+            Node_array temp = x;
+            while (temp->left != nullptr)
+                temp = temp->left;
+            return temp;
+        }
+
+        Node_array BSTreplace(Node_array x) {
+            if (x->left != nullptr && x->right != nullptr)
+                return successor(x->right);
+            if (x->left == nullptr && x->right == nullptr)
+                return nullptr;
+            if (x->left != nullptr)
+                return x->left;
+            else
+                return x->right;
+        }
+
+        void deleteNode(Node_array v) {
+            Node_array u = BSTreplace(v);
+            bool uvBlack = ((u == nullptr || u->color == BLACK) && (v->color == BLACK));
+            Node_array parent = v->parent;
+
+            if (u == nullptr) {
+                if (v == mroot) {
+                    mroot = nullptr;
+                } else {
+                    if (uvBlack) {
+                        fixDoubleBlack(v);
+                    } else {
+                        if (v->sibling() != nullptr)
+                            v->sibling()->color = RED;
+                    }
+
+                    // delete v from the tree
+                    if (v->isOnLeft()) {
+                        parent->left = nullptr;
+                    } else {
+                        parent->right = nullptr;
+                    }
+                }
+                delete v;
+                return;
+            }
+
+            if (v->left == nullptr || v->right == nullptr) {
+                if (v == mroot) {
+                    v->data = u->data;
+                    v->left = v->right = nullptr;
+                    delete u;
+                } else {
+                    if (v->isOnLeft()) {
+                        parent->left = u;
+                    } else {
+                        parent->right = u;
+                    }
+                    delete v;
+                    u->parent = parent;
+                    if (uvBlack) {
+                        fixDoubleBlack(u);
+                    } else {
+                        u->color = BLACK;
+                    }
+                }
+                return;
+            }
+            swapValues(u, v);
+            deleteNode(u);
+        }
+
+        void fixDoubleBlack(Node_array x) {
+            if (x == mroot)
+                return;
+
+            Node_array sibling = x->sibling(), parent = x->parent;
+            if (sibling == nullptr) {
+                fixDoubleBlack(parent);
+            } else {
+                if (sibling->color == RED) {
+                    parent->color = RED;
+                    sibling->color = BLACK;
+                    if (sibling->isOnLeft()) {
+                        rightRotate(parent);
+                    } else {
+                        leftRotate(parent);
+                    }
+                    fixDoubleBlack(x);
+                } else {
+                    if (sibling->hasRedChild()) {
+                        if (sibling->left != nullptr and sibling->left->color == RED) {
+                            if (sibling->isOnLeft()) {
+                                // left left
+                                sibling->left->color = sibling->color;
+                                sibling->color = parent->color;
+                                rightRotate(parent);
+                            } else {
+                                // right left
+                                sibling->left->color = parent->color;
+                                rightRotate(sibling);
+                                leftRotate(parent);
+                            }
+                        } else {
+                            if (sibling->isOnLeft()) {
+                                // left right
+                                sibling->right->color = parent->color;
+                                leftRotate(sibling);
+                                rightRotate(parent);
+                            } else {
+                                // right right
+                                sibling->right->color = sibling->color;
+                                sibling->color = parent->color;
+                                leftRotate(parent);
+                            }
+                        }
+                        parent->color = BLACK;
+                    } else {
+                        sibling->color = RED;
+                        if (parent->color == BLACK)
+                            fixDoubleBlack(parent);
+                        else
+                            parent->color = BLACK;
+                    }
+                }
+            }
+        }
+
+        void levelOrder(Node_array x) {
+            if (x == nullptr)
+                return;
+            std::queue<Node_array> q;
+            Node_array curr;
+
+            q.push(x);
+
+            while (!q.empty()) {
+                curr = q.front();
+                q.pop();
+                std::cout << curr->data << " ";
+                if (curr->left != nullptr)
+                    q.push(curr->left);
+                if (curr->right != nullptr)
+                    q.push(curr->right);
+            }
+        }
+
+        void inOrder(Node_array x) {
+            if (x == nullptr)
+                return;
+            inOrder(x->left);
+            std::cout << x->data << " ";
+            inOrder(x->right);
+        }
 
     };
+
 }
 
 #endif //ACM_TEMPLATE_ADVANCETREE_H
