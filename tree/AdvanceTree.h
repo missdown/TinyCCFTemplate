@@ -619,6 +619,19 @@ namespace ADTree{
 
     };
 
+    template<typename T>
+    class BTree {
+        class BTreeNode {
+        public:
+            int *keys;
+
+        private:
+        };
+
+    public:
+    private:
+    };
+
 }
 
 #endif //ACM_TEMPLATE_ADVANCETREE_H
