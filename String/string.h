@@ -100,7 +100,7 @@ namespace String{
         }
 
         std::list<int> *search(std::string s) {
-            if (s.length() == 0)
+            if (!s.length())
                 return indexs;
 
             int cIndex = static_cast<int>(s.at(0));
@@ -137,6 +137,212 @@ namespace String{
             }
 
         }
+    };
+
+
+    class AcMachine {
+        const static int MAXS = 500; // MAX number of states in the matching machine
+        const static int MAXC = 26;  // MAX number of characters in input alphabet
+    public:
+        AcMachine() {
+        };
+
+        void SearchWords(std::string text) {
+            BuildTree();
+            int currentState = 0;
+            for (int i = 0; i < text.size(); ++i) {
+                currentState = FindNextState(currentState, text[i]);
+                if (!out[currentState])
+                    continue;
+
+                // Match found, print all matching words of arr[]
+                for (int j = 0; j < stringlist.size(); ++j) {
+                    if (out[currentState] & (1 << j)) {
+                        std::cout << "Word \"" << stringlist[j] << "\" from " << i - stringlist[j].size() + 1 << " to "
+                                  << i << std::endl;
+                    }
+                }
+            }
+        }
+
+        void Insert(const std::string &s) {
+            stringlist.push_back(s);
+        }
+
+        void test() {
+            Insert("sunxiaochuan");
+            Insert("nm$l");
+            Insert("renren");
+
+            std::string text = "sunxiaochuannmslnmlrenrendoushisunxiaochuan";
+
+            SearchWords(text);
+        }
+
+
+    private:
+
+        int BuildTree() {
+            // Init arrays.
+            memset(out, 0, sizeof(out));
+            memset(g, -1, sizeof(g));
+
+            int states = -1;
+            // Cinstruct values for goto function
+            for (int i = 0; i < stringlist.size(); ++i) {
+                const std::string &word = stringlist[i];
+                int currentState = 0;
+                for (auto ch : word) {
+                    ch -= 'a';
+
+                    if (g[currentState][static_cast<int>(ch)] == -1)
+                        g[currentState][static_cast<int>(ch)] = states++;
+                    currentState = g[currentState][static_cast<int>(ch)];
+                }
+
+                // Add current word in output function
+                out[currentState] |= (1 << i);
+            }
+
+            // For all characters which don't have an edge from root(or state 0) in Trie, add an edge to state 0 itself
+            for (int ch = 0; ch < MAXC; ++ch) {
+                if (g[0][ch] == -1)
+                    g[0][ch] = 0;
+            }
+
+            // Initialize values in fail function
+            memset(f, -1, sizeof(f));
+
+            // Using BFS
+            std::queue<int> q;
+            for (int ch = 0; ch < MAXC; ++ch) {
+                if (g[0][ch] != 0) {
+                    f[g[0][ch]] = 0;
+                    q.push(g[0][ch]);
+                }
+            }
+
+            // For the removed state, find failure function for all those characters for which got ot function is not defined
+            while (!q.empty()) {
+                int state = q.front();
+                q.pop();
+                for (int ch = 0; ch <= MAXC; ++ch) {
+                    if (g[state][ch] != -1) {
+                        // Find failure state of removed state.
+                        int failure = f[state];
+
+                        while (g[failure][ch] == -1)
+                            failure = f[failure];
+                        failure = g[failure][ch];
+                        f[g[state][ch]] = failure;
+                        // Merge output values
+                        out[g[state][ch]] |= out[failure];
+                        // Insert the next level node (of Trie) in Queue
+                        q.push(g[state][ch]);
+                    }
+                }
+            }
+            return states;
+        }
+
+        int FindNextState(int currentState, char nextInput) {
+            int answer = currentState;
+            int ch = nextInput - 'a';
+
+            // IF goto is not defined, use failure function
+            while (g[answer][ch] == -1)
+                answer = f[answer];
+
+            return g[answer][ch];
+        }
+
+        int f[MAXS]; // Failure function
+        int g[MAXS][MAXC]; // GOTO function
+        int out[MAXS];
+
+        std::vector<std::string> stringlist;
+
+    };
+
+    class AcMachion2 {
+        struct TreeNode {
+            int fail = 0;
+            int vis[26] = {0};
+            int end = 0;
+        };
+        using Node = TreeNode;
+        using Node_array = TreeNode *;
+    public:
+        AcMachion2() {
+
+        }
+
+        void Build(const std::string s) {
+            int now = 0; // Current pointer
+            for (auto i : s) {
+                while (now >= TrieTree.size()) {
+                    TrieTree.emplace_back(Node());
+                }
+                if (TrieTree[now].vis[i - 'a'] == 0)
+                    TrieTree[now].vis[i - 'a'] = ++cnt;
+                now = TrieTree[now].vis[i - 'a'];
+            }
+            TrieTree[now].end += 1;
+        }
+
+        int ACSearching(std::string s) {
+            TrieTree[0].fail = 0;
+            GetFail();
+            int now = 0, ans = 0;
+            for (auto i : s) {
+                now = TrieTree[now].vis[i - 'a'];
+                for (int t = now; t && TrieTree[t].end != -1; t = TrieTree[t].fail)//循环求解
+                {
+                    ans += TrieTree[t].end;
+                    TrieTree[t].end = -1;
+                }
+            }
+            return ans;
+        }
+
+        void test() {
+            Build("sunxiaochuan");
+            Build("nm$l");
+            Build("renren");
+
+            std::string text = "sunxiaochuannmslnmlrenrendoushisunxiaochuan";
+
+            std::cout << ACSearching(text) << std::endl;
+        }
+
+    private:
+
+        void GetFail() {
+            std::queue<int> Q;
+            for (int i = 0; i < 26; ++i) {
+                if (TrieTree[0].vis[i] != 0) {
+                    TrieTree[TrieTree[0].vis[i]].fail = 0;
+                    Q.push(TrieTree[0].vis[i]);
+                }
+            }
+
+            while (!Q.empty()) {
+                int u = Q.front();
+                Q.pop();
+                for (int i = 0; i < 26; ++i) {
+                    if (TrieTree[u].vis[i] != 0) {
+                        TrieTree[TrieTree[u].vis[i]].fail = TrieTree[TrieTree[u].fail].vis[i];
+                        Q.push(TrieTree[u].vis[i]);
+                    } else  // IF not existed
+                        TrieTree[u].vis[i] = TrieTree[TrieTree[u].fail].vis[i];
+                }
+            }
+        }
+
+
+        int cnt = 0;
+
+        std::vector<TreeNode> TrieTree;
     };
 
 }

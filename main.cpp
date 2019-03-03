@@ -204,5 +204,11 @@ int main() {
     std::string txt = "HOCHSCHULDEUTSCH";
     String::SuffixTrid S(txt);
     S.search("SCH");
+
+    String::AcMachine ac;
+    ac.test();
+
+    String::AcMachion2 ac2;
+    ac2.test();
     return 0;
 }
