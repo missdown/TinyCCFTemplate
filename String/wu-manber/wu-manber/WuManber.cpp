@@ -9,7 +9,7 @@
 
 #include <math.h>
 #include <assert.h>
-
+#include <algorithm>
 #include <exception>
 #include <iostream>
 #include <string>
@@ -126,7 +126,7 @@ unsigned char WuManber::rchExtendedAscii[] = {
 					hash <<= m_nBitsInShift;
 					hash += (m_lu[patterns[j][q     - 1]].offset & 0xF);
 					size_t shiftlen = m - q;
-					m_ShiftTable[ hash ] = min( m_ShiftTable[ hash ], shiftlen );
+                    m_ShiftTable[hash] = min(m_ShiftTable[hash], static_cast<unsigned int>(shiftlen));
 					if ( 0 == shiftlen ) {
 						m_PatternMapElement.ix = j;
 						m_PatternMapElement.PrefixHash = m_lu[patterns[j][0]].offset;

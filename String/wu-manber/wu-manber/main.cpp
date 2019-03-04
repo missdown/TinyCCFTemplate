@@ -1,6 +1,7 @@
 #include "WuManber.h"
 #include <stdio.h>
-
+#include <cstring>
+#include <memory>
 typedef unsigned short      WORD;
 
 #define WORD_SIZE 65536

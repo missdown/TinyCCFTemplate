@@ -210,5 +210,9 @@ int main() {
 
     String::AcMachion2 ac2;
     ac2.test();
+
+    String::WuManber wm;
+    wm.TestWuManber();
+    wm.TestWuManber2();
     return 0;
 }

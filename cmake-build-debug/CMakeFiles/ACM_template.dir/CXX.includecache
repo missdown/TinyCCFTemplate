@@ -41,6 +41,10 @@ queue
 /home/miss/CLionProjects/ACM_template/String/string.h
 list
 -
+queue
+-
+map
+-
 
 /home/miss/CLionProjects/ACM_template/dp/dp.h
 iostream
@@ -91,6 +95,4 @@ cstdlib
 -
 
 /home/miss/CLionProjects/ACM_template/tree/AdvanceTree.h
-queue
--
 

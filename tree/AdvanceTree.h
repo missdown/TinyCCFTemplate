@@ -5,7 +5,6 @@
 #ifndef ACM_TEMPLATE_ADVANCETREE_H
 #define ACM_TEMPLATE_ADVANCETREE_H
 
-#include <queue>
 
 namespace ADTree {
 
@@ -625,18 +624,6 @@ namespace ADTree {
 
     };
 
-    template<typename T>
-    class BTree {
-        class BTreeNode {
-        public:
-            int *keys;
-
-        private:
-        };
-
-    public:
-    private:
-    };
 
 }
 

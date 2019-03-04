@@ -5,6 +5,8 @@
 
 #include <vector>
 #include <map>
+#include <cstring>
+#include <memory>
 using namespace std;
 
 class WuManber {
