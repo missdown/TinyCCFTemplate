@@ -365,6 +365,10 @@ namespace ShortestPath {
                 }
          */
 
+        void EulerPath() {
+
+        }
+
     private:
 
         const T INF = std::numeric_limits<T>::max() / 2;

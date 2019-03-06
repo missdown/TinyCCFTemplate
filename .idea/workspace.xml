@@ -11,17 +11,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252abc1b-3b0f-4994-b220-515b7391ecc7" name="Default Changelist" comment="">
+    <list default="true" id="252abc1b-3b0f-4994-b220-515b7391ecc7" name="Default Changelist" comment="Hamiltonian graph Update.">
+      <change afterPath="$PROJECT_DIR$/Graph/Fleury.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Graph/Hamitonian.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Graph/Hierholzer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/String/string.h" beforeDir="false" afterPath="$PROJECT_DIR$/String/string.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/String/wu-manber/wu-manber/WuManber.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/String/wu-manber/wu-manber/WuManber.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/String/wu-manber/wu-manber/WuManber.h" beforeDir="false" afterPath="$PROJECT_DIR$/String/wu-manber/wu-manber/WuManber.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/String/wu-manber/wu-manber/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/String/wu-manber/wu-manber/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ACM_template" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ACM_template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ACM_template.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ACM_template.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ACM_template.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ACM_template.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree/AdvanceTree.h" beforeDir="false" afterPath="$PROJECT_DIR$/tree/AdvanceTree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/sp.h" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/sp.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,63 +25,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/String/wu-manber/wu-manber/WuManber.h">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="513">
-                    <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-                    <folding>
-                      <element signature="e#232#249#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/String/wu-manber/wu-manber/WuManber.cpp">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="4485">
-                    <caret line="195" column="21" selection-start-line="147" selection-start-column="8" selection-end-line="195" selection-end-column="21" />
-                    <folding>
-                      <element signature="e#255#276#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/String/wu-manber/wu-manber/main.cpp">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="736">
-                    <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-                    <folding>
-                      <element signature="e#0#21#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FavoritesManager">
     <favorites_list name="ACM_template" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/String/string.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="676" column="9" selection-start-line="676" selection-start-column="9" selection-end-line="676" selection-end-column="9" />
+            <state relative-caret-position="1478">
+              <caret line="483" column="42" selection-start-line="483" selection-start-column="42" selection-end-line="483" selection-end-column="42" />
               <folding>
                 <element signature="e#98#113#0" expanded="true" />
               </folding>
@@ -95,10 +44,67 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Graph/sp.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="368" selection-start-line="368" selection-end-line="368" />
+              <folding>
+                <element signature="e#272#284#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Graph/Fleury.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1351">
+              <caret line="126" column="1" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+              <folding>
+                <element signature="e#37#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Graph/Hierholzer.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1121">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="e#37#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Graph/Hamitonian.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="e#38#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Step">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="215" column="23" selection-start-line="215" selection-start-column="23" selection-end-line="215" selection-end-column="23" />
+            <state relative-caret-position="1651">
+              <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -118,6 +124,7 @@
       <find>min(m_</find>
       <find>__SIZE_TYPE__</find>
       <find>NODE</find>
+      <find>WORD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -137,14 +144,19 @@
         <option value="$PROJECT_DIR$/tree/AdvanceTree.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/String/string.h" />
+        <option value="$PROJECT_DIR$/Graph/sp.h" />
+        <option value="$PROJECT_DIR$/Graph/Fleury.cpp" />
+        <option value="$PROJECT_DIR$/Graph/Hierholzer.cpp" />
+        <option value="$PROJECT_DIR$/Graph/Hamitonian.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="25" />
-    <option name="width" value="1920" />
-    <option name="height" value="1055" />
+    <option name="x" value="-503" />
+    <option name="y" value="27" />
+    <option name="width" value="1900" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -163,7 +175,7 @@
             <path>
               <item name="ACM_template" type="b2602c69:ProjectViewProjectNode" />
               <item name="ACM_template" type="462c0819:PsiDirectoryNode" />
-              <item name="tree" type="462c0819:PsiDirectoryNode" />
+              <item name="Graph" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -224,7 +236,8 @@
       <workItem from="1551407304452" duration="14686000" />
       <workItem from="1551509061974" duration="4078000" />
       <workItem from="1551598843259" duration="9225000" />
-      <workItem from="1551701615824" duration="5214000" />
+      <workItem from="1551701615824" duration="5600000" />
+      <workItem from="1551835705954" duration="6957000" />
     </task>
     <task id="LOCAL-00001" summary="RBTree update">
       <created>1549452051782</created>
@@ -282,11 +295,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551608554423</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="WM Update.">
+      <created>1551706878660</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1551706878660</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40121000" />
+    <option name="totallyTimeSpent" value="47464000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -300,12 +320,12 @@
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4962853" visible="true" weight="0.14407684" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4962853" visible="true" weight="0.1456777" />
       <window_info id="Structure" order="1" sideWeight="0.5037147" side_tool="true" weight="0.13927428" />
       <window_info id="Favorites" order="2" sideWeight="0.5019305" side_tool="true" weight="0.17503586" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32829374" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32829374" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -321,6 +341,28 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4962853" visible="true" weight="0.1456777" />
+      <window_info id="Structure" order="1" sideWeight="0.5037147" side_tool="true" weight="0.13927428" />
+      <window_info id="Favorites" order="2" sideWeight="0.5019305" side_tool="true" weight="0.17503586" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32829374" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32829374" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.26349893" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.33801296" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32937366" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -384,7 +426,9 @@
     <MESSAGE value="TridTree Completed." />
     <MESSAGE value="BTree Update." />
     <MESSAGE value="AC Update." />
-    <option name="LAST_COMMIT_MESSAGE" value="AC Update." />
+    <MESSAGE value="WM Update." />
+    <MESSAGE value="Hamiltonian graph Update." />
+    <option name="LAST_COMMIT_MESSAGE" value="Hamiltonian graph Update." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -454,23 +498,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Graph/sp.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1633">
-          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
-          <folding>
-            <element signature="e#272#284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Step">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/String/AC_automation.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -522,16 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="215" column="23" selection-start-line="215" selection-start-column="23" selection-end-line="215" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tree/AdvanceTree.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -539,12 +556,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Step">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/String/string.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="676" column="9" selection-start-line="676" selection-start-column="9" selection-end-line="676" selection-end-column="9" />
+        <state relative-caret-position="1478">
+          <caret line="483" column="42" selection-start-line="483" selection-start-column="42" selection-end-line="483" selection-end-column="42" />
           <folding>
             <element signature="e#98#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1651">
+          <caret line="112" column="14" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Graph/sp.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="368" selection-start-line="368" selection-end-line="368" />
+          <folding>
+            <element signature="e#272#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Graph/Fleury.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1351">
+          <caret line="126" column="1" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+          <folding>
+            <element signature="e#37#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Graph/Hierholzer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1121">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#37#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Graph/Hamitonian.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#38#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
