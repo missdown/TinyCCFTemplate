@@ -10,6 +10,8 @@
 #include <map>
 
 namespace String{
+
+
     const int maxn = 100;
     int next[maxn];
     int nextpro[maxn];

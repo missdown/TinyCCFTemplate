@@ -11,9 +11,6 @@
 #include <algorithm>
 
 
-
-
-
 float Sqrt(float x)
 {
     float a = x;
@@ -34,6 +31,26 @@ float invSqrt(float x)
     x = x * (1.5 - xhalf * x * x); // Newton step
     return x;
 }
+
+// Calculate (a * b) % c  long long a, b;
+long long mult_mod(long long a, long long b, long long c) {
+    a %= c;
+    b %= c;
+    long long ret = 0;
+    while (b) {
+        if (b & 1) {
+            ret += a;
+            ret %= c;
+        }
+        a <<= 1;
+        if (a >= c) {
+            a %= c;
+        }
+        b >>= 1;
+    }
+    return ret;
+}
+
 
 int Factrial(int n) {
     if (n == 0 || n == 1) return 1;

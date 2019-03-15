@@ -26,6 +26,7 @@ int main() {
     std::vector<int> list;
     Find_Prime(10, &list);
     std::cout << std::endl;
+    std::cout << mult_mod(10, 4, 3) << std::endl;
     FactorFactors::FindFF(2147483646);
     ExGcd extgcd;
     Combination combina;
