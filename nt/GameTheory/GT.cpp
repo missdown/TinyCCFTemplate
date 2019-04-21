@@ -23,17 +23,50 @@ int Bgame(int n,int m)
 我理解Nimm Game 就是将他当做一种规律来理解的至于为什么会有这种规律我们先暂时不去讨论想看的可以看这：尼姆游戏
 
 假如有3堆物品(a,b,c)
-（0，0，0）状态时先手是一个必输局势因为没有东西可取，(0,n,n) 状态时也是必输局势只要后者在另一堆取得物品与前者一样多时那么前者也就是必输局势。慢慢分析(1,2,3)也是一个必输局势。如果我们将其转化为二进制形式并通过异或运算(^)我们会发现：
+（0，0，0）状态时先手是一个必输局势因为没有东西可取，(0,n,n) 状态时也是必输局势只要后者在另一堆取得物品与前者一样多时那么前者也就是必输局势。
+ 慢慢分析(1,2,3)也是一个必输局势。如果我们将其转化为二进制形式并通过异或运算(^)我们会发现：
 0001^0010^0011=0000
 通过验证所有的堆数量累^后只要为0就都是必输局势，所以我们就只要记住这个规则就好了。
  */
 
+
+// Last One Take Win.
 int Ngame(int n)
 {
     int flag=0;
-    for(int i=0;i<n;i++)
-    {flag^=f[i];}
+    for(int i=0; i < n; i++) { flag^=f[i];}
     if(flag)return 1;
+    return 0;
+}
+
+// Last One Take Lose.
+int misèrenim() {
+    int n, a, flag, c, max, over;
+    while (scanf("%d", &n) != EOF) {
+        flag = 0, c = 0, max = 0, over = 0;
+        for (int i = 0; i < n; ++i) {
+            scanf("%d", &a);
+            flag ^= a;
+            if (a > 1)
+                c++;
+            if (a > max)
+                max = a;
+            if (a > 0)
+                over++;
+        }
+        if (c <= 1) {
+            if (max == 1 && over % 2 == 1)
+                printf("orzwang9897\n");
+            else
+                printf("orzwym6912\n");
+            continue;
+        }
+
+        if (flag == 0)
+            printf("orzwang9897\n");
+        else
+            printf("orzwym6912\n");
+    }
     return 0;
 }
 
