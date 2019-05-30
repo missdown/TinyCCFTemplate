@@ -394,7 +394,7 @@ namespace BinaryTree {
         using node = Node<T>;
         using node_array = node *;
     public:
-        ~Tree(){
+        ~Tree() {
             __delete(mroot);
         }
 
@@ -476,7 +476,7 @@ namespace BinaryTree {
 
         void __delete(node_array root) {
             if (root == nullptr)
-                return ;
+                return;
             __delete(root->lchild);
             __delete(root->rchild);
             delete root;
@@ -485,11 +485,10 @@ namespace BinaryTree {
         void __erase(node_array &root, int x) {
             if (root == nullptr) return;
             if (root->data == x) {
-                if (root->lchild == nullptr && root->rchild == nullptr){
+                if (root->lchild == nullptr && root->rchild == nullptr) {
                     delete root;
                     root = nullptr;
-                }
-                else if (root->lchild != nullptr) {
+                } else if (root->lchild != nullptr) {
                     node_array pre = __findMax(root->lchild);
                     root->data = pre->data;
                     __erase(root->lchild, pre->data);

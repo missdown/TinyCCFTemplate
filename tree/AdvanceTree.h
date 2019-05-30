@@ -624,6 +624,102 @@ namespace ADTree {
 
     };
 
+    // Time Complexity: O(log(max(A)) , where max(A) is the maximum element in the array A[].
+
+    class WaveletTree {
+    public:
+        WaveletTree() = delete;
+
+        // Default constructor
+        // Array is in range [x, y]
+        // Indices are in range [from, to]
+        WaveletTree(int *from, int *to, int x, int y) {
+            // Initialising low and high
+            low = x, high = y;
+            // Array is of 0 length
+            if (from >= to)
+                return;
+            // Array is homogenous
+            // Example : 1 1 1 1 1
+            if (high == low) {
+                // Assigning storage to freq array
+                freq.reserve(to - from + 1);
+                // Initialising the Freq array
+                freq.push_back(0);
+                // Assigning values
+                for (auto it = from; it != to; it++)
+
+                    // freq will be increasing as there'll
+                    // be no further sub-tree
+                    freq.push_back(freq.back() + 1);
+
+                return;
+            }
+
+            // Computing mid
+            int mid = (low + high) / 2;
+
+            // Lambda function to check if a number
+            // is less than or equal to mid
+            auto lessThanMid = [mid](int x) {
+                return x <= mid;
+            };
+
+            // Assigning storage to freq array
+            freq.reserve(to - from + 1);
+
+            // Initialising the freq array
+            freq.push_back(0);
+
+            // Assigning value to freq array
+            for (auto it = from; it != to; it++)
+
+                // If lessThanMid returns 1(true), we add
+                // 1 to previous entry. Otherwise, we add 0
+                // (element goes to right sub-tree)
+                freq.push_back(freq.back() + lessThanMid(*it));
+
+            // std::stable_partition partitions the array w.r.t Mid
+            auto pivot = std::stable_partition(from, to, lessThanMid);
+
+            // Left sub-tree's object
+            l = new WaveletTree(from, pivot, low, mid);
+
+            // Right sub-tree's object
+            r = new WaveletTree(pivot, to, mid + 1, high);
+        }
+
+//        ~WaveletTree(){
+//            delete l;
+//            delete r;
+//            freq.clear();
+//        }
+
+        // Count of numbers in range[L..R] less than or equal to k
+        int KOrLess(int il, int ir, int k) {
+            // No elements int range is less than k
+            if (il > ir or k < low)
+                return 0;
+            // All elements in the range are less than k
+            if (high <= k)
+                return ir - il + 1;
+
+            // Computing LtCount and RtCount
+            int LtCount = freq[il - 1];
+            int RtCount = freq[ir];
+
+            // Answer is (no. of element <= k) in
+            // left + (those <= k) in right
+            return (this->l->KOrLess(LtCount + 1, RtCount, k) +
+                    this->r->KOrLess(il - LtCount, ir - RtCount, k));
+        }
+
+    private:
+        int low, high;
+        std::vector<int> freq;
+        WaveletTree *l, *r;
+    };
+
 
 }
 

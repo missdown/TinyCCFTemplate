@@ -215,5 +215,14 @@ int main() {
     String::WuManber wm;
     wm.TestWuManber();
     wm.TestWuManber2();
+
+    std::cout << "Wavelet tree:" << std::endl;
+    int high = 0;
+    int arr[] = {0, 0, 9, 1, 2, 1, 7, 6, 4, 8, 9, 4, 3, 7, 5, 9, 2, 7, 0, 5, 1, 0};
+    for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
+        high = max(high, arr[i]);
+    ADTree::WaveletTree obj(arr, arr + sizeof(arr) / sizeof(int), 1, high);
+    // count of elements less than 2 in range [1,3]
+    std::cout << obj.KOrLess(0, 3, 2) << std::endl;
     return 0;
 }
